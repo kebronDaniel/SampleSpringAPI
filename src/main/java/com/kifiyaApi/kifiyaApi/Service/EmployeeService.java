@@ -45,4 +45,14 @@ public class EmployeeService {
         return newEmployee;
     }
 
+    public Employee updateEmployee(Long id, Employee employee){
+        Employee foundEmployee;
+        foundEmployee = employeeRepository.findById(id).get();
+        foundEmployee.setName(employee.getName());
+        foundEmployee.setAge(employee.getAge());
+        foundEmployee.setDescription(employee.getDescription());
+        employeeRepository.save(foundEmployee);
+        return foundEmployee;
+    }
+
 }
