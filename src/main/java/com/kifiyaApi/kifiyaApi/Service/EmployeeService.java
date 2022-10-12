@@ -36,4 +36,13 @@ public class EmployeeService {
         return employeeRepository.findById(id).get();
     }
 
+    public Employee addEmployee(Employee employee){
+        Employee newEmployee = new Employee();
+        newEmployee.setName(employee.getName());
+        newEmployee.setAge(employee.getAge());
+        newEmployee.setDescription(employee.getDescription());
+        employeeRepository.save(newEmployee);
+        return newEmployee;
+    }
+
 }
