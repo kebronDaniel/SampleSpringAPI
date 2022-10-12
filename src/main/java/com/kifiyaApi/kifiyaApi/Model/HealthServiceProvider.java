@@ -3,7 +3,7 @@ package com.kifiyaApi.kifiyaApi.Model;
 import javax.persistence.*;
 
 @Entity
-public class HealthServiceProviders {
+public class HealthServiceProvider {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -13,10 +13,10 @@ public class HealthServiceProviders {
     private String address;
     private String description;
 
-    public HealthServiceProviders() {
+    public HealthServiceProvider() {
     }
 
-    public HealthServiceProviders(Long id, String name, String address, String description) {
+    public HealthServiceProvider(Long id, String name, String address, String description) {
         Id = id;
         this.name = name;
         this.address = address;

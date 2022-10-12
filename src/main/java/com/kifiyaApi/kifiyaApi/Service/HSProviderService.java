@@ -1,9 +1,11 @@
 package com.kifiyaApi.kifiyaApi.Service;
 
-import com.kifiyaApi.kifiyaApi.Model.HealthServiceProviders;
+import com.kifiyaApi.kifiyaApi.Model.HealthServiceProvider;
 import com.kifiyaApi.kifiyaApi.Repository.HSProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class HSProviderService {
@@ -15,12 +17,40 @@ public class HSProviderService {
         this.hsProviderRepository = hsProviderRepository;
     }
 
-    public HealthServiceProviders saveHealthServiceProvider (HealthServiceProviders providers){
-        HealthServiceProviders newProvider = new HealthServiceProviders();
-        newProvider.setName(providers.getName());
-        newProvider.setDescription(providers.getDescription());
-        newProvider.setAddress(providers.getAddress());
+    public HealthServiceProvider addHealthServiceProvider (HealthServiceProvider provider){
+        HealthServiceProvider newProvider = new HealthServiceProvider();
+        newProvider.setName(provider.getName());
+        newProvider.setDescription(provider.getDescription());
+        newProvider.setAddress(provider.getAddress());
         hsProviderRepository.save(newProvider);
         return newProvider;
     }
+
+    public List<HealthServiceProvider> getAllProviders(){
+        return hsProviderRepository.findAll();
+    }
+
+    public HealthServiceProvider getOneProvider(Long id){
+        return hsProviderRepository.findById(id).get();
+    }
+
+    public HealthServiceProvider updateProvider(Long id, HealthServiceProvider provider){
+        HealthServiceProvider foundProvider;
+        foundProvider = hsProviderRepository.findById(id).get();
+        foundProvider.setAddress(provider.getAddress());
+        foundProvider.setDescription(provider.getDescription());
+        foundProvider.setName(provider.getName());
+        hsProviderRepository.save(foundProvider);
+        return foundProvider;
+    }
+
+    public void deleteProvider(Long id){
+        hsProviderRepository.deleteById(id);
+    }
+
+
+
+
+
+
 }

@@ -1,9 +1,5 @@
 package com.kifiyaApi.kifiyaApi;
 
-import com.kifiyaApi.kifiyaApi.Model.Employee;
-import com.kifiyaApi.kifiyaApi.Model.HealthServiceProviders;
-import com.kifiyaApi.kifiyaApi.Repository.EmployeeRepository;
-import com.kifiyaApi.kifiyaApi.Repository.HSProviderRepository;
 import com.kifiyaApi.kifiyaApi.Service.EmployeeService;
 import com.kifiyaApi.kifiyaApi.Service.HSProviderService;
 import org.springframework.beans.factory.annotation.Autowired;
