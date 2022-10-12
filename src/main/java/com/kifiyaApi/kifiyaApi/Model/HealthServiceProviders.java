@@ -54,4 +54,14 @@ public class HealthServiceProviders {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "HealthServiceProviders{" +
+                "Id=" + Id +
+                ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
 }
