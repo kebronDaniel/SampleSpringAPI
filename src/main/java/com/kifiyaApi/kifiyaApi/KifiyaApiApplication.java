@@ -34,19 +34,19 @@ public class KifiyaApiApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		System.out.println("------------------saving a new data------------------");
-		Employee keb = new Employee();
-		keb.setAge(23);
-		keb.setDescription("Good");
-		keb.setName("Kebron");
-		employeeService.saveEmployee(keb);
+//		Employee keb = new Employee();
+//		keb.setAge(23);
+//		keb.setDescription("Good");
+//		keb.setName("Kebron");
+//		employeeService.saveEmployee(keb);
 		System.out.println("------------------Finished saving a new data------------------");
 
 		System.out.println("------------------saving a new Health service provider data------------------");
-		HealthServiceProviders yekatit = new HealthServiceProviders();
-		yekatit.setAddress("Filweha");
-		yekatit.setDescription("General Hospital");
-		yekatit.setName("Yekatit");
-		hsProviderService.saveHealthServiceProvider(yekatit);
+//		HealthServiceProviders yekatit = new HealthServiceProviders();
+//		yekatit.setAddress("Filweha");
+//		yekatit.setDescription("General Hospital");
+//		yekatit.setName("Yekatit");
+//		hsProviderService.saveHealthServiceProvider(yekatit);
 		System.out.println("------------------Finished saving a new data------------------");
 	}
 }

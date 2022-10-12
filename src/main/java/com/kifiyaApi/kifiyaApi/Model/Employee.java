@@ -6,7 +6,7 @@ import javax.persistence.*;
 public class Employee {
 
     @javax.persistence.Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "emp_id")
     private Long Id;
     private String name;
