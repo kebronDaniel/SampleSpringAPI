@@ -18,12 +18,7 @@ public class HSProviderService {
     }
 
     public HealthServiceProvider addHealthServiceProvider (HealthServiceProvider provider){
-        HealthServiceProvider newProvider = new HealthServiceProvider();
-        newProvider.setName(provider.getName());
-        newProvider.setDescription(provider.getDescription());
-        newProvider.setAddress(provider.getAddress());
-        hsProviderRepository.save(newProvider);
-        return newProvider;
+        return hsProviderRepository.save(provider);
     }
 
     public List<HealthServiceProvider> getAllProviders(){

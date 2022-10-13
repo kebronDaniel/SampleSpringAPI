@@ -1,17 +1,28 @@
 package com.kifiyaApi.kifiyaApi.Model;
 
+import lombok.Data;
+
 import javax.persistence.*;
+import javax.transaction.Transactional;
+import java.util.List;
+
 
 @Entity
+@Transactional
+@Data
 public class HealthServiceProvider {
 
     @javax.persistence.Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "provider_id")
+    @Column(name = "prov_id")
     private Long Id;
     private String name;
     private String address;
     private String description;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "fk_prov_id", referencedColumnName = "prov_id")
+    private List<Employee> employees;
 
     public HealthServiceProvider() {
     }

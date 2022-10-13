@@ -1,8 +1,19 @@
 package com.kifiyaApi.kifiyaApi.Model;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import javax.transaction.Transactional;
+import java.util.List;
+
 
 @Entity
+@Transactional
+@Data
 public class Employee {
 
     @javax.persistence.Id
@@ -12,6 +23,10 @@ public class Employee {
     private String name;
     private int age;
     private String description;
+
+    @ManyToOne
+    @JoinColumn(name = "fk_prov_id")
+    private HealthServiceProvider provider;
 
     public Employee() {
     }
