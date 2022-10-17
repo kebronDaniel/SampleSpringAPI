@@ -12,5 +12,6 @@ public class KifiyaApiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(KifiyaApiApplication.class, args);
 	}
+//	TODO Exception Handling for common cases
 
 }

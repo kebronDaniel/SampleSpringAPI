@@ -28,7 +28,7 @@ public class HSProviderController {
         return hsProviderService.getOneProvider(id);
     }
 
-    @PostMapping(path = "/addnew")
+    @PostMapping(path = "/add_new")
     public HealthServiceProvider addProvider
             (@RequestBody HealthServiceProvider provider){
         return hsProviderService.addHealthServiceProvider(provider);

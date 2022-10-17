@@ -21,12 +21,12 @@ public class EmployeeService {
     public List<Employee> getAllEmployees(){
         List<Employee>allEmployees;
         allEmployees = employeeRepository.findAll();
-//        for (Employee employee: allEmployees
-//             ) {
-//            if (employee.getProvider() == null){
-//                employeeRepository.delete(employee);
-//            }
-//        }
+        for (Employee employee: allEmployees
+             ) {
+            if (employee.getProvider() == null){
+                employeeRepository.delete(employee);
+            }
+        }
         return allEmployees;
     }
 

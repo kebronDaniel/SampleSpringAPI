@@ -17,7 +17,9 @@ public class HealthServiceProvider {
     @Column(name = "prov_id")
     private Long Id;
     private String name;
-    private String address;
+    private String email;
+    private Integer phone_number;
+    private String location;
     private String description;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
@@ -30,7 +32,7 @@ public class HealthServiceProvider {
     public HealthServiceProvider(Long id, String name, String address, String description) {
         Id = id;
         this.name = name;
-        this.address = address;
+        this.location = address;
         this.description = description;
     }
 
@@ -50,12 +52,12 @@ public class HealthServiceProvider {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
+    public String getLocation() {
+        return location;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public String getDescription() {
@@ -74,12 +76,28 @@ public class HealthServiceProvider {
         this.employees = employees;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Integer getPhone_number() {
+        return phone_number;
+    }
+
+    public void setPhone_number(Integer phone_number) {
+        this.phone_number = phone_number;
+    }
+
     @Override
     public String toString() {
         return "HealthServiceProviders{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
-                ", address='" + address + '\'' +
+                ", address='" + location + '\'' +
                 ", description='" + description + '\'' +
                 '}';
     }

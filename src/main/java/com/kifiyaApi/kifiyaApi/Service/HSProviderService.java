@@ -46,8 +46,10 @@ public class HSProviderService {
         List<Employee> employees;
         if (foundProvider != null){
             foundProvider.setName(provider.getName());
-            foundProvider.setAddress(provider.getAddress());
+            foundProvider.setLocation(provider.getLocation());
             foundProvider.setDescription(provider.getDescription());
+            foundProvider.setEmail(provider.getEmail());
+            foundProvider.setPhone_number(provider.getPhone_number());
             foundProvider.setEmployees(provider.getEmployees());
         }
         hsProviderRepository.save(foundProvider);
