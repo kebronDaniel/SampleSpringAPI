@@ -1,6 +1,8 @@
 package com.kifiyaApi.kifiyaApi.Service;
 
+import com.kifiyaApi.kifiyaApi.Model.Employee;
 import com.kifiyaApi.kifiyaApi.Model.HealthServiceProvider;
+import com.kifiyaApi.kifiyaApi.Repository.EmployeeRepository;
 import com.kifiyaApi.kifiyaApi.Repository.HSProviderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +13,12 @@ import java.util.List;
 public class HSProviderService {
 
     private HSProviderRepository hsProviderRepository;
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @Autowired
     public void setHsProviderRepository(HSProviderRepository hsProviderRepository) {
@@ -26,16 +34,23 @@ public class HSProviderService {
     }
 
     public HealthServiceProvider getOneProvider(Long id){
-        return hsProviderRepository.findById(id).get();
+        HealthServiceProvider foundProvider;
+        foundProvider = hsProviderRepository.findById(id).get();
+        System.out.println(foundProvider.getEmployees());
+        return foundProvider;
     }
 
     public HealthServiceProvider updateProvider(Long id, HealthServiceProvider provider){
         HealthServiceProvider foundProvider;
         foundProvider = hsProviderRepository.findById(id).get();
+        List<Employee> employees;
         if (foundProvider != null){
-            hsProviderRepository.delete(foundProvider);
+            foundProvider.setName(provider.getName());
+            foundProvider.setAddress(provider.getAddress());
+            foundProvider.setDescription(provider.getDescription());
+            foundProvider.setEmployees(provider.getEmployees());
         }
-        foundProvider = hsProviderRepository.save(provider);
+        hsProviderRepository.save(foundProvider);
         return foundProvider;
     }
 

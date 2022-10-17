@@ -19,17 +19,16 @@ public class EmployeeService {
     }
 
 
-    public Employee saveEmployee(Employee employee){
-        Employee newEmployee = new Employee();
-        newEmployee.setName(employee.getName());
-        newEmployee.setDescription(employee.getDescription());
-        newEmployee.setAge(employee.getAge());
-        employeeRepository.save(newEmployee);
-        return newEmployee;
-    }
-
     public List<Employee> getAllEmployees(){
-        return employeeRepository.findAll();
+        List<Employee>allEmployees;
+        allEmployees = employeeRepository.findAll();
+        for (Employee employee: allEmployees
+             ) {
+            if (employee.getProvider() == null){
+                employeeRepository.delete(employee);
+            }
+        }
+        return allEmployees;
     }
 
     public Employee getOneEmployee(Long id){
@@ -37,12 +36,7 @@ public class EmployeeService {
     }
 
     public Employee addEmployee(Employee employee){
-        Employee newEmployee = new Employee();
-        newEmployee.setName(employee.getName());
-        newEmployee.setAge(employee.getAge());
-        newEmployee.setDescription(employee.getDescription());
-        employeeRepository.save(newEmployee);
-        return newEmployee;
+        return employeeRepository.save(employee);
     }
 
     public Employee updateEmployee(Long id, Employee employee){
@@ -57,6 +51,10 @@ public class EmployeeService {
 
     public void deleteEmployee(Long id){
         employeeRepository.deleteById(id);
+    }
+
+    public void deleteAllEmployee(){
+        employeeRepository.deleteAll();
     }
 
 }

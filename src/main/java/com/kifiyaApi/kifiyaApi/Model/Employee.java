@@ -26,7 +26,7 @@ public class Employee {
     private String description;
 
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_prov_id")
     private HealthServiceProvider provider;
 

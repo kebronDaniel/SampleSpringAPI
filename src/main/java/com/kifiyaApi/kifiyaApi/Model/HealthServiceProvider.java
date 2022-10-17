@@ -20,7 +20,7 @@ public class HealthServiceProvider {
     private String address;
     private String description;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_prov_id", referencedColumnName = "prov_id")
     private List<Employee> employees;
 
@@ -64,6 +64,14 @@ public class HealthServiceProvider {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     @Override
