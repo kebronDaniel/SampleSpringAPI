@@ -18,7 +18,7 @@ public class HealthServiceProvider {
     private Long Id;
     private String name;
     private String email;
-    private Integer phone_number;
+    private String phone_number;
     private String location;
     private String description;
 
@@ -84,11 +84,11 @@ public class HealthServiceProvider {
         this.email = email;
     }
 
-    public Integer getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(Integer phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 

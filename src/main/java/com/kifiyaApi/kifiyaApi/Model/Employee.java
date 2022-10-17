@@ -21,6 +21,7 @@ public class Employee {
     private String email;
     private String gender;
     private String address;
+    private String title;
 
 
     @JsonIgnore
@@ -31,11 +32,14 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(Long id, String name, int age, String description) {
-        Id = id;
+    public Employee(String name, int age, String email, String gender, String address, String title, HealthServiceProvider provider) {
         this.name = name;
         this.age = age;
-        this.email = description;
+        this.email = email;
+        this.gender = gender;
+        this.address = address;
+        this.title = title;
+        this.provider = provider;
     }
 
     public Long getId() {
@@ -94,13 +98,25 @@ public class Employee {
         this.provider = provider;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", description='" + email + '\'' +
+                ", email='" + email + '\'' +
+                ", gender='" + gender + '\'' +
+                ", address='" + address + '\'' +
+                ", title='" + title + '\'' +
+                ", provider=" + provider +
                 '}';
     }
 }

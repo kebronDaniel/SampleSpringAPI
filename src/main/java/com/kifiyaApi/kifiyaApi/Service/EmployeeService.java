@@ -48,6 +48,7 @@ public class EmployeeService {
         foundEmployee.setAge(employee.getAge());
         foundEmployee.setGender(employee.getGender());
         foundEmployee.setAddress(employee.getAddress());
+        foundEmployee.setTitle(employee.getTitle());
         //TODO enable to change a provider from here.
         employeeRepository.save(foundEmployee);
         System.out.println("-------After the change ----------");
