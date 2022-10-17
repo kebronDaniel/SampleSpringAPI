@@ -32,10 +32,10 @@ public class HSProviderService {
     public HealthServiceProvider updateProvider(Long id, HealthServiceProvider provider){
         HealthServiceProvider foundProvider;
         foundProvider = hsProviderRepository.findById(id).get();
-        foundProvider.setAddress(provider.getAddress());
-        foundProvider.setDescription(provider.getDescription());
-        foundProvider.setName(provider.getName());
-        hsProviderRepository.save(foundProvider);
+        if (foundProvider != null){
+            hsProviderRepository.delete(foundProvider);
+        }
+        foundProvider = hsProviderRepository.save(provider);
         return foundProvider;
     }
 

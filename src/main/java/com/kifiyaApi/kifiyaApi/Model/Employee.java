@@ -1,5 +1,6 @@
 package com.kifiyaApi.kifiyaApi.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -24,7 +25,8 @@ public class Employee {
     private int age;
     private String description;
 
-    @ManyToOne
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "fk_prov_id")
     private HealthServiceProvider provider;
 
