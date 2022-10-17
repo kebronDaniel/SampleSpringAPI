@@ -2,14 +2,9 @@ package com.kifiyaApi.kifiyaApi.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
-import java.util.List;
 
 
 @Entity
@@ -23,7 +18,10 @@ public class Employee {
     private Long Id;
     private String name;
     private int age;
-    private String description;
+    private String email;
+    private String gender;
+    private String address;
+
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
@@ -37,7 +35,7 @@ public class Employee {
         Id = id;
         this.name = name;
         this.age = age;
-        this.description = description;
+        this.email = description;
     }
 
     public Long getId() {
@@ -64,12 +62,36 @@ public class Employee {
         this.age = age;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public HealthServiceProvider getProvider() {
+        return provider;
+    }
+
+    public void setProvider(HealthServiceProvider provider) {
+        this.provider = provider;
     }
 
     @Override
@@ -78,7 +100,7 @@ public class Employee {
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", age=" + age +
-                ", description='" + description + '\'' +
+                ", description='" + email + '\'' +
                 '}';
     }
 }

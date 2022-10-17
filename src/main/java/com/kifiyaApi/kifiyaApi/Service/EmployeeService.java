@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -22,12 +21,12 @@ public class EmployeeService {
     public List<Employee> getAllEmployees(){
         List<Employee>allEmployees;
         allEmployees = employeeRepository.findAll();
-        for (Employee employee: allEmployees
-             ) {
-            if (employee.getProvider() == null){
-                employeeRepository.delete(employee);
-            }
-        }
+//        for (Employee employee: allEmployees
+//             ) {
+//            if (employee.getProvider() == null){
+//                employeeRepository.delete(employee);
+//            }
+//        }
         return allEmployees;
     }
 
@@ -42,19 +41,22 @@ public class EmployeeService {
     public Employee updateEmployee(Long id, Employee employee){
         Employee foundEmployee;
         foundEmployee = employeeRepository.findById(id).get();
+        System.out.println("got the employee");
+        System.out.println(foundEmployee);
         foundEmployee.setName(employee.getName());
+        foundEmployee.setEmail(employee.getEmail());
         foundEmployee.setAge(employee.getAge());
-        foundEmployee.setDescription(employee.getDescription());
+        foundEmployee.setGender(employee.getGender());
+        foundEmployee.setAddress(employee.getAddress());
+        //TODO enable to change a provider from here.
         employeeRepository.save(foundEmployee);
+        System.out.println("-------After the change ----------");
+        System.out.println(foundEmployee);
         return foundEmployee;
     }
 
     public void deleteEmployee(Long id){
         employeeRepository.deleteById(id);
-    }
-
-    public void deleteAllEmployee(){
-        employeeRepository.deleteAll();
     }
 
 }
